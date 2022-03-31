@@ -1,52 +1,81 @@
-# Prerequisites
-*.d
+# Created by https://www.toptal.com/developers/gitignore/api/macos,vagrant,puppet,microsoftoffice
+# Edit at https://www.toptal.com/developers/gitignore?templates=macos,vagrant,puppet,microsoftoffice
 
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
 
-# Linker output
-*.ilk
-*.map
-*.exp
+# Icon must end with two \r
+Icon
 
-# Precompiled Headers
-*.gch
-*.pch
+# Thumbnails
+._*
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
 
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
+### MicrosoftOffice ###
+*.tmp
+*.docx
+# Word temporary
+~$*.doc*
 
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
+# Word Auto Backup File
+Backup of *.doc*
 
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+# Excel temporary
+~$*.xls*
+
+# Excel Backup File
+*.xlk
+
+# PowerPoint temporary
+~$*.ppt*
+
+# Visio autosave temporary files
+*.~vsd*
+
+### Puppet ###
+# gitignore template for Puppet modules
+# website: https://forge.puppet.com/
+
+# Built packages
+pkg/*
+
+# Should run on multiple platforms so don't check in
+Gemfile.lock
+
+# Tests
+spec/fixtures/*
+coverage/*
+
+# Third-party
+vendor/*
+.bundle/*
+
+### Vagrant ###
+# General
+.vagrant/
+
+# Log files (if you are creating logs in debug mode, uncomment this)
+# *.log
+
+### Vagrant Patch ###
+*.box
+
+# End of https://www.toptal.com/developers/gitignore/api/macos,vagrant,puppet,microsoftoffice
