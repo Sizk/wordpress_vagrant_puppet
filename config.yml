@@ -1,0 +1,5 @@
+configs:
+  urls:
+    puppet_base_url: "https://apt.puppet.com/"
+    puppet_deb: "puppet7-release-bionic.deb"
+  more_vars:
