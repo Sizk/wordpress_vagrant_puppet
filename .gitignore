@@ -78,4 +78,7 @@ vendor/*
 ### Vagrant Patch ###
 *.box
 
+### PDF ###
+*.pdf
+
 # End of https://www.toptal.com/developers/gitignore/api/macos,vagrant,puppet,microsoftoffice
