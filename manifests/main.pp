@@ -98,7 +98,3 @@ service { 'enable and start apache':
   enable => true,
   require => FILE_LINE['Write password config'],
 }
-
-exec { 'reload apache':
-  command => ['/usr/bin/sudo','/etc/init.d/apache2 reload']
-}
