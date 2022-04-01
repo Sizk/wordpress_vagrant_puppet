@@ -73,7 +73,7 @@ file_line { 'Write database name to wordpress config':
   path   => '/srv/www/wordpress/wp-config.php',
   line   => "define( 'DB_NAME', 'wordpress' );",
   match  => "^define\(\ 'DB_NAME', 'database_name_",
-  multiple => true,
+
 }
 file_line { 'Write user name to wordpress config':
   ensure => present,
@@ -89,10 +89,16 @@ file_line { 'Write password config':
   line   => "define( 'DB_PASSWORD', '${mysql_pass}' );",
   match  => "^define\(\ 'DB_PASSWORD', 'password",
   multiple => true,
+  notify => Service['enable and start apache'],
 }
 
 service { 'enable and start apache':
   name => 'apache2',
   ensure => 'running',
   enable => true,
+  require => FILE_LINE['Write password config'],
+}
+
+exec { 'reload apache':
+  command => ['/usr/bin/sudo','/etc/init.d/apache2 reload']
 }
