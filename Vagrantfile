@@ -110,22 +110,11 @@ Vagrant.configure("2") do |config|
                     echo \"Puppet version: `puppet --version`\";
                     mkdir -p /etc/puppet/modules;
                     puppet module install puppetlabs/mysql;
-                    puppet module install puppetlabs-stdlib;
-                    puppet module install puppetlabs-rsync;
-                    puppet module install rehan-wget;
                     puppet module install puppet-archive;
                     puppet module install puppetlabs/apache;"
   end
-  # config.librarian_puppet.puppetfile_dir = "puppet"
-  # # placeholder_filename defaults to .PLACEHOLDER
-  # config.librarian_puppet.placeholder_filename = ".MYPLACEHOLDER"
-  # config.librarian_puppet.use_v1_api  = '1' # Check https://github.com/voxpupuli/librarian-puppet#how-to-use
-  # config.librarian_puppet.destructive = false # Check https://github.com/voxpupuli/librarian-puppet#how-to-use
-
-
   
   config.vm.provision "puppet" do | puppet | 
-    #puppet.module_path = "puppet/modules"
     puppet.manifests_path = "manifests"
     puppet.manifest_file  = "main.pp"
   end
