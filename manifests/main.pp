@@ -52,8 +52,13 @@ mysql::db { 'wordpress':
   password => $mysql_pass,
   host => 'localhost',
   grant => 'ALL',
-
+  sql => "/vagrant/files/mysql/wordpressdump.sql"
 }
+
+# exec { 'Import database dump':
+#   command => ['/usr/bin/sudo', "mysql wordpress < /vagrant/files/mysql/wordpressdump.sql"],
+#   require => mysql::db['wordpress'],
+# }
 
 file { 'Copy wordpress config':
   path => "/srv/www/wordpress/wp-config.php",
@@ -67,19 +72,23 @@ file_line { 'Write database name to wordpress config':
   ensure => present,
   path   => '/srv/www/wordpress/wp-config.php',
   line   => "define( 'DB_NAME', 'wordpress' );",
-  match  => "define( 'DB_NAME', 'database_name_here' );",
+  match  => "^define\(\ 'DB_NAME', 'database_name_",
+  multiple => true,
 }
 file_line { 'Write user name to wordpress config':
   ensure => present,
   path   => '/srv/www/wordpress/wp-config.php',
   line   => "define( 'DB_USER', 'wordpress' );",
-  match  => "define( 'DB_USER', 'username_here' );",
+  match  => "^define\(\ 'DB_USER', 'username_",
+  multiple => true,
+
 }
 file_line { 'Write password config':
   ensure => present,
   path   => '/srv/www/wordpress/wp-config.php',
   line   => "define( 'DB_PASSWORD', '${mysql_pass}' );",
-  match  => "define( 'DB_PASSWORD', 'password_here' );",
+  match  => "^define\(\ 'DB_PASSWORD', 'password",
+  multiple => true,
 }
 
 service { 'enable and start apache':
